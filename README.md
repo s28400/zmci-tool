@@ -16,7 +16,7 @@ If the credentials are correct, it will then fetch the unit(s) associated with t
 Next it will display the following menu:
 ```
 #### MAIN MENU ####
-Availalbe commands:
+Available commands:
 1. get_units
 2. get_userinfo
 3. get_last_transmit
