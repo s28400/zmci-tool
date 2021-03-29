@@ -36,7 +36,7 @@ name: Motorcycle VIN (string)
 unittype: Unclear what this equates to (int)
 unitmodel: Unclear what this equates to (int)
 analog1: Unknown (float)
-milleage: Motorcylce odometer (float)
+milleage: Motorcyle odometer (float)
 software_version: Motorcycle FW version (int)
 logic_state: Unknown (unknown)
 reason: Unknown (unknown)
@@ -125,4 +125,4 @@ logourl: URL for logo (string)
 ## Other Information
 The tracking system used appears to be made by Starcom Systems: https://www.starcomsystems.com/
 
-Futher research around these systems could help explain some of the still unknown values. Some of these values could be general values from the OTS system that is not used by the motorcycle.
+Further research around these systems could help explain some of the still unknown values. Some of these values could be general values from the OTS system that is not used by the motorcycle.

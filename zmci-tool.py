@@ -113,7 +113,7 @@ if __name__ == "__main__":
     print(command_list[1])
     while(1):
         print("\n#### MAIN MENU ####")
-        print("Availalbe commands:")
+        print("Available commands:")
         index = 1
         for command in command_list:
             print(f"{index}. {command}")
