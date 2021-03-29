@@ -31,6 +31,7 @@ get_history: Gets diagnostic packets from cloud uploaded over a specified range 
 ## Diagnostics Information Contents:
 
 ### Useful Diagnostic Contents:
+```
 unitnumber: Unique unit number for motorcycle (string)
 name: Motorcycle VIN (string)
 unittype: Unclear what this equates to (int)
@@ -74,8 +75,10 @@ chargercomplete: Charge complete (boolean)
 pluggedin: Motorcycle charger plugged in (boolean)
 chargingtimeleft: Motorcycle charge time left (boolean)
 storage: Unknown (unknown)
+```
 
 ### Unknown Diagnostic Packet Contents:
+```
 analog1
 logic_state
 reason
@@ -90,8 +93,10 @@ siren
 lock
 int_lights
 storage
+```
 
 ### Unit Packet Contents
+```
 unitnumber: Unique unit number for motorcycle (string)
 name: Motorcycle VIN (string)
 address: Country code of registered unit (string)
@@ -101,8 +106,10 @@ icon: Unknown (unknown)
 active: Unknown (boolean)
 unitmodel: Unknown (int)
 custom: Unknown (list/array)
+```
 
 ### User Info Packet Contents
+```
 fullname: Account username email (string)
 phone: Account phone number (string)
 email: Account email (string)
@@ -120,6 +127,7 @@ maptype: Unknown (unknown)
 allowhistoryreport: Unknown (boolean)
 addunitsbycode: Unknown (boolean)
 logourl: URL for logo (string)
+```
 
 
 ## Other Information
