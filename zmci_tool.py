@@ -37,19 +37,25 @@ class ZeroCloudInterface:
         self.user_name = user_name
         self.user_pass = user_pass
         # Get unit number for account
-        self.units = unit_packets = self.get_unit_information_for_user_account(user_name, user_pass)
-        
+        self.units = self.get_info_by_command(GET_UNITS, None)
+        print(f"Found {len(self.units)} unit{'s' if len(self.units)>1 else ''} associated with account: {self.user_name}")
 
 
-    def get_info_by_command(self, command_name, user_name, user_pass, unit_number, additional_args=None):
+    def get_info_by_command(self, command_name, unit_number, additional_args=None):
         # Fetch data from cloud
         payload = {'commandname': command_name,
                    'format': data_format,
-                   'user': user_name,
-                   'pass': user_pass,
+                   'user': self.user_name,
+                   'pass': self.user_pass,
                    'unitnumber': unit_number}
 
         response = requests.get(url, params=payload)
+
+        # Check if response is good
+        if response.status_code != 200:
+            print(f"Error fetching information, status code {response.status_code}. Check credentials and try again.")
+            sys.exit(0)
+
         zero_string_result = response.text
 
         # Load json format dict
@@ -57,23 +63,11 @@ class ZeroCloudInterface:
         return zero_dict_result
 
 
-    def get_unit_information_for_user_account(self, user_name, user_pass):
-        # Fetch unit_number given user credentials
-        units = self.get_info_by_command(GET_UNITS, user_name, user_pass, None)
-
-        if len(units):
-            print(f"Found {len(units)} unit{'s' if len(units)>1 else ''} associated with account: {user_name}")
-        else:
-            print("[ERROR] Did not receive unit information")
-            sys.exit(0)
-
-        return units
-
     def scan_for_new_diagnostic_packets(self, unit_number, scan_interval_s):
         previous_diagnostic_packet = None
         # Loop through and look for new diagnosti packets
         while(1):
-            diagnostics_packet = z1.get_info_by_command(GET_LAST_TRANSMIT, user_name, user_pass, unit_number, None)
+            diagnostics_packet = z1.get_info_by_command(GET_LAST_TRANSMIT, unit_number, None)
 
             # Check last received packet time against latest and see if new
             if previous_diagnostic_packet:
@@ -128,8 +122,8 @@ if __name__ == "__main__":
             start_date = input("Input start date for history (Format: YYYYMMDD): ")
             end_date = input("Input end date for history (Format: YYYYMMDD): ")
             args = f" -d start={start_date} -d end={end_date}"
-
-        print(z1.get_info_by_command(command_list[command_index-1], user_name, user_pass, unit_number, args))
+        print(f"Command: {command_list[command_index-1]}, unit number: {unit_number}, args: {args}")
+        print(z1.get_info_by_command(command_list[command_index-1], unit_number, args))
 
         print("\nDone, returning to menu")
 
