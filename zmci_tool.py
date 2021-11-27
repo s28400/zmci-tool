@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 #!python
 
-import os
 import sys
-import time
 import requests
-from getpass import getpass
 import json
 
 # Configuration

@@ -1,0 +1,14 @@
+# This service unit is for fetching and forwarding Zero data to HomeAssistant via MQTT
+
+[Unit]
+Description=ZMCI HomeAssistant MQTT interface tool
+Wants=zmci_ha_mqtt.timer
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/<user>/zmci_tool/
+User=<user>
+ExecStart=/usr/bin/python3 /home/<user>/zmci_tool/zmci_ha_mqtt.py
+
+[Install]
+WantedBy=multi-user.target

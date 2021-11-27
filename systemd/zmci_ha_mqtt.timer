@@ -1,0 +1,12 @@
+# This timer unit is for calling Zero HomeAssistant MQTT service
+
+[Unit]
+Description=Calls Zero HomeAssistant MQTT service
+Requires=zmci_ha_mqtt.service
+
+[Timer]
+Unit=zmci_ha_mqtt.service
+OnCalendar=*:*:0/5
+
+[Install]
+WantedBy=timers.target
