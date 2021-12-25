@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 #!python
 
+import os
 import sys
 import requests
 import json
+import getpass
 
 # Configuration
 data_format = "json"  # Format to return data back as (Options: json, csv)
@@ -84,7 +86,7 @@ if __name__ == "__main__":
     print("This menu will guide you through the example usage")
     print("\nFirst, enter your login information for your zero account")
     user_name = input("Username (email): ")
-    user_pass = getpass("Password: ")
+    user_pass = getpass.getpass("Password: ")
 
     # Create interface object with username and pass
     z1 = ZeroCloudInterface(user_name, user_pass)
