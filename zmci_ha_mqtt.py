@@ -46,6 +46,7 @@ if __name__ == "__main__":
 	print(f"Last Transmit Data: {last_transmit}")
 
 	# Pack up useful data to send to HA via MQTT
+	client.publish('home/motorcycle/datetime_utc', last_transmit[0]['datetime_utc'])
 	client.publish('home/motorcycle/vin', last_transmit[0]['name'])
 	client.publish('home/motorcycle/sw_version', last_transmit[0]['software_version'])
 	client.publish('home/motorcycle/soc', last_transmit[0]['soc'])
