@@ -114,7 +114,7 @@ zero_motorcycle_create:
   sequence:
     - service: mqtt.publish
       data:
-        topic: "homeassistant/sensor/soc/config"
+        topic: "homeassistant/sensor/datetime_utc/config"
         retain: true
         payload: >
           {

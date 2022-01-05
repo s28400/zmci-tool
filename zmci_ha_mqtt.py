@@ -6,6 +6,7 @@ import paho.mqtt.client as mqtt
 import paho.mqtt.publish as publish
 from zmci_tool import ZeroCloudInterface
 from dotenv import load_dotenv
+from datetime import datetime
 
 
 if __name__ == "__main__":
@@ -45,8 +46,11 @@ if __name__ == "__main__":
 
 	print(f"Last Transmit Data: {last_transmit}")
 
+	# Convert UTC timestamp to formatted string
+	dt_obj = datetime.strptime(last_transmit[0]['datetime_utc'], '%Y%m%d%H%M%S')
+
 	# Pack up useful data to send to HA via MQTT
-	client.publish('home/motorcycle/datetime_utc', last_transmit[0]['datetime_utc'])
+	client.publish('home/motorcycle/datetime_utc', str(dt_obj))
 	client.publish('home/motorcycle/vin', last_transmit[0]['name'])
 	client.publish('home/motorcycle/sw_version', last_transmit[0]['software_version'])
 	client.publish('home/motorcycle/soc', last_transmit[0]['soc'])
