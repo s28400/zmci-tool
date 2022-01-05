@@ -120,7 +120,6 @@ zero_motorcycle_create:
           {
             "name": "Zero Packet Datetime UTC",
             "state_topic": "home/motorcycle/datetime_utc",
-            "unit_of_measurement": "UTC",
             "unique_id": "zero_srf_datetime_utc",
             "device": {
                 "identifiers": ["zero_srf"],

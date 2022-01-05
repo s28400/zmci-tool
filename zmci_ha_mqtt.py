@@ -47,7 +47,7 @@ if __name__ == "__main__":
 	print(f"Last Transmit Data: {last_transmit}")
 
 	# Convert UTC timestamp to formatted string
-	dt_obj = datetime.strptime(last_transmit[0]['datetime_utc'], '%Y%m%d%H%M%S')
+	dt_obj = datetime.strptime(last_transmit[0]['datetime_actual'], '%Y%m%d%H%M%S')
 
 	# Pack up useful data to send to HA via MQTT
 	client.publish('home/motorcycle/datetime_utc', str(dt_obj))
